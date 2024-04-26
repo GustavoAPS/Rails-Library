@@ -15,6 +15,7 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(whitelist_book_params)
+        @book.user = User.first #TODO: Hard coded assigned user when creating a book, update when we have login system.
         if @book.save
           flash[:notice] = "Book created sucessfully."
           redirect_to book_path(@book)
